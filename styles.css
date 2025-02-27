@@ -90,17 +90,17 @@ input[type="text"]:focus {
     border-left: 4px solid;
 }
 
-/* Different colors for different categories */
+/* Different colors for different categories - updated for WCAG compliance */
 .category:nth-child(1) {
-    border-left-color: #5e72e4; /* Blue */
+    border-left-color: #4050c0; /* Darker blue matching the button color */
 }
 
 .category:nth-child(2) {
-    border-left-color: #11cdef; /* Cyan */
+    border-left-color: #0299b5; /* Darker cyan matching the button color */
 }
 
 .category:nth-child(3) {
-    border-left-color: #fb6340; /* Orange for warning/danger */
+    border-left-color: #e04d24; /* Darker orange matching the button color */
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -124,6 +124,7 @@ input[type="text"]:focus {
     color: #8898aa;
 }
 
+/* Improve button accessibility with better contrast */
 .category button {
     position: absolute;
     top: 15px;
@@ -131,20 +132,27 @@ input[type="text"]:focus {
     padding: 5px 12px;
     font-size: 13px;
     border-radius: 6px;
-    font-weight: 500;
+    font-weight: 600; /* Make font weight heavier for better readability */
+    color: white; /* Ensure text is white for all buttons */
 }
 
-/* Style buttons based on parent category color */
+/* Style buttons based on parent category color with improved contrast */
 .category:nth-child(1) button {
-    background-color: #5e72e4;
+    background-color: #4050c0; /* Darker blue for better contrast */
 }
 
 .category:nth-child(2) button {
-    background-color: #11cdef;
+    background-color: #0299b5; /* Darker cyan for better contrast */
 }
 
 .category:nth-child(3) button {
-    background-color: #fb6340;
+    background-color: #e04d24; /* Darker orange for better contrast */
+}
+
+/* Add focus styles for keyboard navigation accessibility */
+.category button:focus {
+    outline: 2px solid #000;
+    outline-offset: 2px;
 }
 
 .checkbox-group {
@@ -209,13 +217,15 @@ input[type="text"]:focus {
     }
 }
 
+/* Update the general select styling as well for consistency */
 select {
     width: 100%;
+    height: 55px;
     padding: 14px 12px;
     margin-bottom: 25px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Updated to match */
     font-size: 16px;
     appearance: none;
     background: #fff;
@@ -253,9 +263,9 @@ button:hover {
     margin-bottom: 0;
 }
 
-/* Style the select inside the search controls */
+/* Style the select inside the search controls - updated font to match input */
 .search-controls select {
-    flex: 1; /* Give less space to the dropdown */
+    flex: 1;
     min-width: 120px;
     margin-bottom: 0;
     padding: 14px 10px;
@@ -263,6 +273,8 @@ button:hover {
     background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235e72e4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'%3E%3C/path%3E%3C/svg%3E") no-repeat right 10px center;
     background-size: 12px;
     border: 1px solid #dce1e9;
+    font-family: 'Poppins', sans-serif; /* Match the input font */
+    font-size: 16px; /* Match the input font size */
 }
 
 /* Style the main search button */

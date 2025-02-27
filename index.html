@@ -1,35 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Job Board Safari</title>
-    <!-- Updated fonts with more options -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Search jobs across multiple job boards with a single search">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@500;700&display=swap">
     <link rel="stylesheet" href="./styles.css">
     <script src="./script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
-<body style="padding-top: 20px;">
-    <div class="container">
-        <h1>Job Board Safari</h1>
-        <p>Search jobs across multiple job boards with a single search.</p>
-        <div class="search-controls">
-            <input type="text" id="colorInput" onkeypress="handleKeyPress(event)" placeholder="Enter job title or keywords" />
-            <select id="timeRange">
-                <option value="">All time</option>
-                <option value="qdr:h">Past hour</option>
-                <option value="qdr:d">Past 24 hours</option>
-                <option value="qdr:w">Past week</option>
-                <option value="qdr:m">Past month</option>
-            </select>
-        </div>
-        <button class="search-button" onclick="generateSearch()">Generate Search</button>
-        <div class="checkboxes">
-            <div class="category">
+<body>
+    <main class="container">
+        <header>
+            <h1>Job Board Safari</h1>
+            <p>Search jobs across multiple job boards with a single search.</p>
+        </header>
+        
+        <section class="search-section">
+            <div class="search-controls">
+                <input type="text" id="colorInput" onkeypress="handleKeyPress(event)" placeholder="Enter job title or keywords" aria-label="Job search keywords" />
+                <select id="timeRange" aria-label="Time range filter">
+                    <option value="">All time</option>
+                    <option value="qdr:h">Past hour</option>
+                    <option value="qdr:d">Past 24 hours</option>
+                    <option value="qdr:w">Past week</option>
+                    <option value="qdr:m">Past month</option>
+                </select>
+            </div>
+            <button class="search-button" onclick="generateSearch()">Generate Search</button>
+        </section>
+        
+        <section class="checkboxes">
+            <article class="category">
                 <h3>User-Friendly Job Boards</h3>
                 <p>Fast and easy job boards with a single page and no login required.</p>
                 <button type="button" onclick="selectAll('popular')">Select All</button>
-                <div class="checkbox-group" id="popular">
+                <div class="checkbox-group" id="popular" role="group" aria-labelledby="popular-heading">
                     <label>
                         <input type="checkbox" id="greenhouse" checked />
                         Greenhouse
@@ -75,12 +82,13 @@
                         Workable
                     </label>
                 </div>
-            </div>
-            <div class="category">
+            </article>
+            
+            <article class="category">
                 <h3>Job boards with multi-step applications.</h3>
                 <p>Common job boards with straightforward application processes.</p>
                 <button type="button" onclick="selectAll('other')">Select All</button>
-                <div class="checkbox-group" id="other">
+                <div class="checkbox-group" id="other" role="group" aria-labelledby="other-heading">
                     <label>
                         <input type="checkbox" id="smartrecruiters" />
                         SmartRecruiters
@@ -90,12 +98,13 @@
                         Jobvite
                     </label>
                 </div>
-            </div>
-            <div class="category">
-                <h3>⚠️ Zone of Pain ⚠️</h3>
+            </article>
+            
+            <article class="category">
+                <h3 id="specialized-heading">⚠️ Zone of Pain ⚠️</h3>
                 <p>Job boards that may require accounts to apply.</p>
                 <button type="button" onclick="selectAll('specialized')">Select All</button>
-                <div class="checkbox-group" id="specialized">
+                <div class="checkbox-group" id="specialized" role="group" aria-labelledby="specialized-heading">
                     <label>
                         <input type="checkbox" id="icims" />
                         iCIMS
@@ -109,9 +118,8 @@
                         Workday
                     </label>
                 </div>
-            </div>
-        </div>
-        <div id="results"></div>
-    </div>
+            </article>
+        </section>
+    </main>
 </body>
 </html>
