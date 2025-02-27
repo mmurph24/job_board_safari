@@ -2,7 +2,6 @@ body {
     font-family: 'Poppins', sans-serif; 
     margin: 0;
     padding: 0;
-    /* Softer, less intense gradient background */
     background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
     display: flex;
     justify-content: center;
@@ -31,7 +30,6 @@ h1 {
     display: inline-block;
 }
 
-/* Add underline effect for h1 */
 h1::after {
     content: "";
     position: absolute;
@@ -68,39 +66,66 @@ input[type="text"]:focus {
     outline: none;
 }
 
+/* Improved checkboxes container styling */
 .checkboxes {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 25px;
-    background-color: #f8fafc;
-    border-radius: 12px;
-    padding: 15px;
-    border: 1px solid #eaecf0;
+    background-color: transparent; /* Remove the gray background */
+    padding: 0; /* Remove padding */
+    border: none; /* Remove border */
 }
 
+/* Enhanced category styling for better contrast and appearance */
 .category {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Increase spacing between categories */
     background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    padding: 18px 20px; /* Slightly more padding for better spacing */
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07); /* Enhanced shadow */
     position: relative;
     border-left: 4px solid;
+    overflow: hidden; /* Make sure everything stays contained */
 }
 
-/* Different colors for different categories - updated for WCAG compliance */
+/* Add a subtle pattern background to each category for depth */
+.category::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0)
+    );
+    pointer-events: none; /* Make sure it doesn't interfere with clicks */
+    z-index: 0; /* Place behind content */
+}
+
+/* Ensure all content is above the background pattern */
+.category h3, 
+.category p, 
+.category button, 
+.checkbox-group {
+    position: relative;
+    z-index: 1;
+}
+
 .category:nth-child(1) {
-    border-left-color: #4050c0; /* Darker blue matching the button color */
+    border-left-color: #4050c0; 
 }
 
 .category:nth-child(2) {
-    border-left-color: #0299b5; /* Darker cyan matching the button color */
+    border-left-color: #0299b5; 
 }
 
 .category:nth-child(3) {
-    border-left-color: #e04d24; /* Darker orange matching the button color */
+    border-left-color: #e04d24;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -124,7 +149,7 @@ input[type="text"]:focus {
     color: #8898aa;
 }
 
-/* Improve button accessibility with better contrast */
+
 .category button {
     position: absolute;
     top: 15px;
@@ -132,24 +157,22 @@ input[type="text"]:focus {
     padding: 5px 12px;
     font-size: 13px;
     border-radius: 6px;
-    font-weight: 600; /* Make font weight heavier for better readability */
-    color: white; /* Ensure text is white for all buttons */
+    font-weight: 600; 
+    color: white; 
 }
 
-/* Style buttons based on parent category color with improved contrast */
 .category:nth-child(1) button {
-    background-color: #4050c0; /* Darker blue for better contrast */
+    background-color: #4050c0; 
 }
 
 .category:nth-child(2) button {
-    background-color: #0299b5; /* Darker cyan for better contrast */
+    background-color: #0299b5; 
 }
 
 .category:nth-child(3) button {
-    background-color: #e04d24; /* Darker orange for better contrast */
+    background-color: #e04d24; 
 }
 
-/* Add focus styles for keyboard navigation accessibility */
 .category button:focus {
     outline: 2px solid #000;
     outline-offset: 2px;
@@ -158,21 +181,23 @@ input[type="text"]:focus {
 .checkbox-group {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Changed from flex-start to center */
+    justify-content: center; 
     margin-top: 10px;
+    padding: 0 1%; 
 }
 
-/* Adjust width to work better with centering */
 .checkbox-group label {
     display: flex;
     align-items: center;
-    width: 23%; /* Slightly less than 25% to allow for better centering */
+    width: 23%; 
     margin-bottom: 5px;
-    margin-left: 1%; /* Add small margin for spacing */
-    margin-right: 1%; /* Add small margin for spacing */
+    margin-left: 1%; 
+    margin-right: 1%; 
     padding: 3px 5px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 14px;
+    font-weight: 400; 
+    color: #525f7f; 
     cursor: pointer;
     transition: all 0.2s ease;
     border-radius: 6px;
@@ -180,6 +205,7 @@ input[type="text"]:focus {
 
 .checkbox-group label:hover {
     background-color: #f0f7ff;
+    color: #4050c0; 
 }
 
 .checkbox-group input[type="checkbox"] {
@@ -188,36 +214,35 @@ input[type="text"]:focus {
     cursor: pointer;
 }
 
-/* Update responsive breakpoints to maintain at least two columns */
 @media (max-width: 992px) {
     .checkbox-group label {
-        width: 31%; /* Slightly less than 33% - three columns */
+        width: 31%; 
     }
 }
 
 @media (max-width: 768px) {
     .checkbox-group label {
-        width: 48%; /* Two columns */
+        width: 48%; 
     }
 }
 
-/* Never drop to single column, even on small screens */
 @media (max-width: 480px) {
     .checkbox-group label {
-        width: 48%; /* Keep two columns even on small screens */
-        font-size: 12px; /* Slightly smaller font size */
-        padding: 2px 3px; /* Less padding */
+        width: 48%; 
+        font-size: 12px; 
+        padding: 2px 3px; 
         margin-left: 0.5%;
         margin-right: 0.5%;
+        font-weight: 400;
+        color: #525f7f; 
     }
     
     .checkbox-group input[type="checkbox"] {
-        margin-right: 4px; /* Less margin */
-        transform: scale(1); /* Normal size */
+        margin-right: 4px; 
+        transform: scale(1); 
     }
 }
 
-/* Update the general select styling as well for consistency */
 select {
     width: 100%;
     height: 55px;
@@ -225,7 +250,7 @@ select {
     margin-bottom: 25px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    font-family: 'Poppins', sans-serif; /* Updated to match */
+    font-family: 'Poppins', sans-serif; 
     font-size: 16px;
     appearance: none;
     background: #fff;
@@ -249,7 +274,7 @@ button:hover {
     margin-top: 20px;
 }
 
-/* Create a search controls container */
+
 .search-controls {
     display: flex;
     gap: 10px;
@@ -257,13 +282,11 @@ button:hover {
     align-items: center;
 }
 
-/* Adjust input to fit in the flex container */
 .search-controls input[type="text"] {
-    flex: 3; /* Give the search input more space */
+    flex: 3; 
     margin-bottom: 0;
 }
 
-/* Style the select inside the search controls - updated font to match input */
 .search-controls select {
     flex: 1;
     min-width: 120px;
@@ -273,11 +296,10 @@ button:hover {
     background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235e72e4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'%3E%3C/path%3E%3C/svg%3E") no-repeat right 10px center;
     background-size: 12px;
     border: 1px solid #dce1e9;
-    font-family: 'Poppins', sans-serif; /* Match the input font */
-    font-size: 16px; /* Match the input font size */
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; 
 }
 
-/* Style the main search button */
 .search-button {
     width: 100%;
     margin-bottom: 30px;
@@ -296,7 +318,6 @@ button:hover {
     background-image: linear-gradient(90deg, #4d61c9, #7551cb);
 }
 
-/* Make responsive for smaller screens */
 @media (max-width: 768px) {
     .search-controls {
         flex-direction: column;
@@ -306,4 +327,20 @@ button:hover {
     .search-controls select {
         width: 100%;
     }
+}
+
+.error-message {
+    color: #e03131;
+    font-size: 14px;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    padding: 0;
+    text-align: left;
+    display: none;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

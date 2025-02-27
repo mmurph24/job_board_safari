@@ -19,7 +19,7 @@
         
         <section class="search-section">
             <div class="search-controls">
-                <input type="text" id="colorInput" onkeypress="handleKeyPress(event)" placeholder="Enter job title or keywords" aria-label="Job search keywords" />
+                <input type="text" id="searchTerm" onkeypress="handleKeyPress(event)" placeholder="Enter job title or keywords" aria-label="Job search keywords" />
                 <select id="timeRange" aria-label="Time range filter">
                     <option value="">All time</option>
                     <option value="qdr:h">Past hour</option>
@@ -28,6 +28,7 @@
                     <option value="qdr:m">Past month</option>
                 </select>
             </div>
+            <div id="errorMessage" class="error-message" role="alert" aria-live="assertive"></div>
             <button class="search-button" onclick="generateSearch()">Generate Search</button>
         </section>
         
@@ -85,8 +86,8 @@
             </article>
             
             <article class="category">
-                <h3>Job boards with multi-step applications.</h3>
-                <p>Common job boards with straightforward application processes.</p>
+                <h3>Multi-Step Job Boards</h3>
+                <p>Boards with lenghty or tedious applications.</p>
                 <button type="button" onclick="selectAll('other')">Select All</button>
                 <div class="checkbox-group" id="other" role="group" aria-labelledby="other-heading">
                     <label>

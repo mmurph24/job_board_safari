@@ -1,10 +1,23 @@
 function changeBackground() {
-    const colorInput = document.getElementById('colorInput').value;
-    document.body.style.backgroundColor = colorInput;
+    const searchTerm = document.getElementById('searchTerm').value;
+    document.body.style.backgroundColor = searchTerm;
 }
 
 function generateSearch() {
-    const query = document.getElementById('colorInput').value;
+    const query = document.getElementById('searchTerm').value.trim();
+    const errorMsg = document.getElementById('errorMessage');
+    
+    // Hide any existing error message
+    errorMsg.style.display = 'none';
+    
+    // Check if search term is empty
+    if (query === '') {
+        // Show error message
+        errorMsg.textContent = 'Please enter a search term';
+        errorMsg.style.display = 'block';
+        return;
+    }
+
     const timeRange = document.getElementById('timeRange').value;
     let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
     const sites = [];
