@@ -1,22 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Job Search</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <title>Job Board Safari</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Search jobs across multiple job boards with a single search">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@500;700&display=swap">
     <link rel="stylesheet" href="./styles.css">
     <script src="./script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
-    <div class="container">
-        <h1>Job Search</h1>
-        <p>Find your next job across multiple job boards with a single search.</p>
-        <input type="text" id="colorInput" onkeypress="handleKeyPress(event)" placeholder="Enter job title or keywords" />
-        <div class="checkboxes">
-            <div class="category">
-                <h3>Popular Job Boards</h3>
-                <p>Search across the most popular job boards.</p>
+    <main class="container">
+        <header>
+            <h1>Job Board Safari</h1>
+            <p>Search jobs across multiple job boards with a single search.</p>
+        </header>
+        
+        <section class="search-section">
+            <div class="search-controls">
+                <input type="text" id="searchTerm" onkeypress="handleKeyPress(event)" placeholder="Enter job title or keywords" aria-label="Job search keywords" />
+                <select id="timeRange" aria-label="Time range filter">
+                    <option value="">All time</option>
+                    <option value="qdr:h">Past hour</option>
+                    <option value="qdr:d">Past 24 hours</option>
+                    <option value="qdr:w">Past week</option>
+                    <option value="qdr:m">Past month</option>
+                </select>
+            </div>
+            <div id="errorMessage" class="error-message" role="alert" aria-live="assertive"></div>
+            <button class="search-button" onclick="generateSearch()">Generate Search</button>
+        </section>
+        
+        <section class="checkboxes">
+            <article class="category">
+                <h3>User-Friendly Job Boards</h3>
+                <p>Fast and easy job boards with a single page and no login required.</p>
                 <button type="button" onclick="selectAll('popular')">Select All</button>
-                <div class="checkbox-group" id="popular">
+                <div class="checkbox-group" id="popular" role="group" aria-labelledby="popular-heading">
                     <label>
                         <input type="checkbox" id="greenhouse" checked />
                         Greenhouse
@@ -29,52 +50,62 @@
                         <input type="checkbox" id="ashby" checked />
                         Ashby
                     </label>
-                </div>
-            </div>
-            <div class="category">
-                <h3>Other Job Boards</h3>
-                <p>Search across additional job boards.</p>
-                <button type="button" onclick="selectAll('other')">Select All</button>
-                <div class="checkbox-group" id="other">
                     <label>
-                        <input type="checkbox" id="jazz" />
+                        <input type="checkbox" id="jazz" checked />
                         Jazz
+                    </label>
+                    <label>
+                        <input type="checkbox" id="breezy" checked />
+                        Breezy
+                    </label>
+                    <label>
+                        <input type="checkbox" id="gem" checked />
+                        Gem
+                    </label>
+                    <label>
+                        <input type="checkbox" id="rippling" checked />
+                        Rippling
+                    </label>
+                    <label>
+                        <input type="checkbox" id="zoho" checked />
+                        Zoho
+                    </label>
+                    <label>
+                        <input type="checkbox" id="teamtailor" checked />
+                        Teamtailor
+                    </label>
+                    <label>
+                        <input type="checkbox" id="eightfold" checked />
+                        Eightfold
+                    </label>
+                    <label>
+                        <input type="checkbox" id="workable"  checked />
+                        Workable
+                    </label>
+                </div>
+            </article>
+            
+            <article class="category">
+                <h3>Multi-Step Job Boards</h3>
+                <p>Boards with lenghty or tedious applications.</p>
+                <button type="button" onclick="selectAll('other')">Select All</button>
+                <div class="checkbox-group" id="other" role="group" aria-labelledby="other-heading">
+                    <label>
+                        <input type="checkbox" id="smartrecruiters" />
+                        SmartRecruiters
                     </label>
                     <label>
                         <input type="checkbox" id="jobvite" />
                         Jobvite
                     </label>
-                    <label>
-                        <input type="checkbox" id="breezy" />
-                        Breezy
-                    </label>
-                    <label>
-                        <input type="checkbox" id="gem" />
-                        Gem
-                    </label>
-                    <label>
-                        <input type="checkbox" id="rippling" />
-                        Rippling
-                    </label>
-                    <label>
-                        <input type="checkbox" id="zoho" />
-                        Zoho
-                    </label>
-                    <label>
-                        <input type="checkbox" id="teamtailor" />
-                        Teamtailor
-                    </label>
-                    <label>
-                        <input type="checkbox" id="eightfold" />
-                        Eightfold
-                    </label>
                 </div>
-            </div>
-            <div class="category">
-                <h3>Specialized Job Boards</h3>
-                <p>Search across specialized job boards.</p>
+            </article>
+            
+            <article class="category">
+                <h3 id="specialized-heading">⚠️ Zone of Pain ⚠️</h3>
+                <p>Job boards that may require accounts to apply.</p>
                 <button type="button" onclick="selectAll('specialized')">Select All</button>
-                <div class="checkbox-group" id="specialized">
+                <div class="checkbox-group" id="specialized" role="group" aria-labelledby="specialized-heading">
                     <label>
                         <input type="checkbox" id="icims" />
                         iCIMS
@@ -87,26 +118,9 @@
                         <input type="checkbox" id="workday" />
                         Workday
                     </label>
-                    <label>
-                        <input type="checkbox" id="workable" />
-                        Workable
-                    </label>
-                    <label>
-                        <input type="checkbox" id="smartrecruiters" />
-                        SmartRecruiters
-                    </label>
                 </div>
-            </div>
-        </div>
-        <select id="timeRange">
-            <option value="">All time</option>
-            <option value="qdr:h">Past hour</option>
-            <option value="qdr:d">Past 24 hours</option>
-            <option value="qdr:w">Past week</option>
-            <option value="qdr:m">Past month</option>
-        </select>
-        <button onclick="generateSearch()">Generate Search</button>
-        <div id="results"></div>
-    </div>
+            </article>
+        </section>
+    </main>
 </body>
 </html>

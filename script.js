@@ -1,10 +1,23 @@
 function changeBackground() {
-    const colorInput = document.getElementById('colorInput').value;
-    document.body.style.backgroundColor = colorInput;
+    const searchTerm = document.getElementById('searchTerm').value;
+    document.body.style.backgroundColor = searchTerm;
 }
 
 function generateSearch() {
-    const query = document.getElementById('colorInput').value;
+    const query = document.getElementById('searchTerm').value.trim();
+    const errorMsg = document.getElementById('errorMessage');
+    
+    // Hide any existing error message
+    errorMsg.style.display = 'none';
+    
+    // Check if search term is empty
+    if (query === '') {
+        // Show error message
+        errorMsg.textContent = 'Please enter a search term';
+        errorMsg.style.display = 'block';
+        return;
+    }
+
     const timeRange = document.getElementById('timeRange').value;
     let searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
     const sites = [];
@@ -75,9 +88,44 @@ function handleKeyPress(event) {
     }
 }
 
+// Updated function to toggle between select all and unselect all
 function selectAll(categoryId) {
     const checkboxes = document.querySelectorAll(`#${categoryId} input[type="checkbox"]`);
-    checkboxes.forEach(checkbox => checkbox.checked = true);
+    const button = document.querySelector(`button[onclick="selectAll('${categoryId}')"]`);
+    
+    // Check if all are already selected
+    const allSelected = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    
+    // Toggle all checkboxes
+    checkboxes.forEach(checkbox => checkbox.checked = !allSelected);
+    
+    // Update button text
+    updateButtonText(categoryId);
 }
 
-document.querySelector('button').addEventListener('click', generateSearch);
+// Function to update button text based on checkbox status
+function updateButtonText(categoryId) {
+    const checkboxes = document.querySelectorAll(`#${categoryId} input[type="checkbox"]`);
+    const button = document.querySelector(`button[onclick="selectAll('${categoryId}')"]`);
+    
+    const allSelected = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    button.textContent = allSelected ? "Unselect All" : "Select All";
+}
+
+// Initialize button texts and add event listeners when page loads
+window.onload = function() {
+    // Initialize button texts for all categories
+    updateButtonText('popular');
+    updateButtonText('other');
+    updateButtonText('specialized');
+    
+    // Add listeners to all checkboxes to update button text when changed
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const parentGroup = this.closest('.checkbox-group');
+            if (parentGroup) {
+                updateButtonText(parentGroup.id);
+            }
+        });
+    });
+};
