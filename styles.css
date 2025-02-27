@@ -1,8 +1,9 @@
 body {
-    font-family: 'Roboto', sans-serif; 
+    font-family: 'Poppins', sans-serif; 
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    /* Softer, less intense gradient background */
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -11,9 +12,9 @@ body {
 
 .container {
     background: white;
-    padding: 30px;
+    padding: 30px 30px 15px;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     max-width: 800px;
     width: 100%;
     text-align: center;
@@ -21,14 +22,30 @@ body {
 
 h1 {
     margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    color: #333;
+    color: #3a3a3a;
     font-size: 32px;
+    letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Add underline effect for h1 */
+h1::after {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 4px;
+    background: linear-gradient(90deg, #5e72e4, #11cdef);
+    bottom: -8px;
+    left: 30%;
+    border-radius: 4px;
 }
 
 p {
     margin-bottom: 25px;
-    color: #666;
+    color: #6b7c93;
     font-weight: 400;
     line-height: 1.6;
 }
@@ -37,17 +54,17 @@ input[type="text"] {
     width: calc(100% - 24px);
     padding: 14px 12px;
     margin-bottom: 25px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #dce1e9;
     border-radius: 8px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 input[type="text"]:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    border-color: #5e72e4;
+    box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.25);
     outline: none;
 }
 
@@ -56,44 +73,98 @@ input[type="text"]:focus {
     flex-direction: column;
     align-items: center;
     margin-bottom: 25px;
-    background-color: #f9f9f9;
+    background-color: #f8fafc;
     border-radius: 12px;
-    padding: 20px;
+    padding: 15px;
+    border: 1px solid #eaecf0;
 }
 
 .category {
     width: 100%;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     background: white;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    position: relative;
+    border-left: 4px solid;
 }
 
-.category:last-child {
+/* Different colors for different categories */
+.category:nth-child(1) {
+    border-left-color: #5e72e4; /* Blue */
+}
+
+.category:nth-child(2) {
+    border-left-color: #11cdef; /* Cyan */
+}
+
+.category:nth-child(3) {
+    border-left-color: #fb6340; /* Orange for warning/danger */
     margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .category h3 {
     margin-top: 0;
-    color: #333;
-    font-size: 20px;
+    margin-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+    color: #32325d;
+    font-size: 18px;
+    padding-right: 100px;
+    font-weight: 600;
+}
+
+.category p {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.3;
+    padding-right: 100px;
+    color: #8898aa;
+}
+
+.category button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Style buttons based on parent category color */
+.category:nth-child(1) button {
+    background-color: #5e72e4;
+}
+
+.category:nth-child(2) button {
+    background-color: #11cdef;
+}
+
+.category:nth-child(3) button {
+    background-color: #fb6340;
 }
 
 .checkbox-group {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-top: 15px;
+    justify-content: center; /* Changed from flex-start to center */
+    margin-top: 10px;
 }
 
+/* Adjust width to work better with centering */
 .checkbox-group label {
     display: flex;
     align-items: center;
-    width: 33%;
-    margin-bottom: 12px;
-    padding: 8px 5px;
+    width: 23%; /* Slightly less than 25% to allow for better centering */
+    margin-bottom: 5px;
+    margin-left: 1%; /* Add small margin for spacing */
+    margin-right: 1%; /* Add small margin for spacing */
+    padding: 3px 5px;
     font-family: 'Roboto', sans-serif;
+    font-size: 14px;
     cursor: pointer;
     transition: all 0.2s ease;
     border-radius: 6px;
@@ -107,6 +178,35 @@ input[type="text"]:focus {
     margin-right: 10px;
     transform: scale(1.2);
     cursor: pointer;
+}
+
+/* Update responsive breakpoints to maintain at least two columns */
+@media (max-width: 992px) {
+    .checkbox-group label {
+        width: 31%; /* Slightly less than 33% - three columns */
+    }
+}
+
+@media (max-width: 768px) {
+    .checkbox-group label {
+        width: 48%; /* Two columns */
+    }
+}
+
+/* Never drop to single column, even on small screens */
+@media (max-width: 480px) {
+    .checkbox-group label {
+        width: 48%; /* Keep two columns even on small screens */
+        font-size: 12px; /* Slightly smaller font size */
+        padding: 2px 3px; /* Less padding */
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+        margin-right: 4px; /* Less margin */
+        transform: scale(1); /* Normal size */
+    }
 }
 
 select {
@@ -137,4 +237,61 @@ button:hover {
 
 #results {
     margin-top: 20px;
+}
+
+/* Create a search controls container */
+.search-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+/* Adjust input to fit in the flex container */
+.search-controls input[type="text"] {
+    flex: 3; /* Give the search input more space */
+    margin-bottom: 0;
+}
+
+/* Style the select inside the search controls */
+.search-controls select {
+    flex: 1; /* Give less space to the dropdown */
+    min-width: 120px;
+    margin-bottom: 0;
+    padding: 14px 10px;
+    color: #525f7f;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235e72e4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'%3E%3C/path%3E%3C/svg%3E") no-repeat right 10px center;
+    background-size: 12px;
+    border: 1px solid #dce1e9;
+}
+
+/* Style the main search button */
+.search-button {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 14px 0;
+    background-image: linear-gradient(90deg, #5e72e4, #825ee4);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    font-size: 16px;
+}
+
+.search-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    background-image: linear-gradient(90deg, #4d61c9, #7551cb);
+}
+
+/* Make responsive for smaller screens */
+@media (max-width: 768px) {
+    .search-controls {
+        flex-direction: column;
+    }
+    
+    .search-controls input[type="text"],
+    .search-controls select {
+        width: 100%;
+    }
 }
