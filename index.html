@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Search</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Search</h1>
+        <p>Find your next job across multiple job boards with a single search.</p>
+        <input type="text" id="colorInput" onkeypress="handleKeyPress(event)" placeholder="Enter job title or keywords" />
+        <div class="checkboxes">
+            <div class="category">
+                <h3>Popular Job Boards</h3>
+                <p>Search across the most popular job boards.</p>
+                <button type="button" onclick="selectAll('popular')">Select All</button>
+                <div class="checkbox-group" id="popular">
+                    <label>
+                        <input type="checkbox" id="greenhouse" checked />
+                        Greenhouse
+                    </label>
+                    <label>
+                        <input type="checkbox" id="llever" checked />
+                        Lever
+                    </label>
+                    <label>
+                        <input type="checkbox" id="ashby" checked />
+                        Ashby
+                    </label>
+                </div>
+            </div>
+            <div class="category">
+                <h3>Other Job Boards</h3>
+                <p>Search across additional job boards.</p>
+                <button type="button" onclick="selectAll('other')">Select All</button>
+                <div class="checkbox-group" id="other">
+                    <label>
+                        <input type="checkbox" id="jazz" />
+                        Jazz
+                    </label>
+                    <label>
+                        <input type="checkbox" id="jobvite" />
+                        Jobvite
+                    </label>
+                    <label>
+                        <input type="checkbox" id="breezy" />
+                        Breezy
+                    </label>
+                    <label>
+                        <input type="checkbox" id="gem" />
+                        Gem
+                    </label>
+                    <label>
+                        <input type="checkbox" id="rippling" />
+                        Rippling
+                    </label>
+                    <label>
+                        <input type="checkbox" id="zoho" />
+                        Zoho
+                    </label>
+                    <label>
+                        <input type="checkbox" id="teamtailor" />
+                        Teamtailor
+                    </label>
+                    <label>
+                        <input type="checkbox" id="eightfold" />
+                        Eightfold
+                    </label>
+                </div>
+            </div>
+            <div class="category">
+                <h3>Specialized Job Boards</h3>
+                <p>Search across specialized job boards.</p>
+                <button type="button" onclick="selectAll('specialized')">Select All</button>
+                <div class="checkbox-group" id="specialized">
+                    <label>
+                        <input type="checkbox" id="icims" />
+                        iCIMS
+                    </label>
+                    <label>
+                        <input type="checkbox" id="taleo" />
+                        Taleo
+                    </label>
+                    <label>
+                        <input type="checkbox" id="workday" />
+                        Workday
+                    </label>
+                    <label>
+                        <input type="checkbox" id="workable" />
+                        Workable
+                    </label>
+                    <label>
+                        <input type="checkbox" id="smartrecruiters" />
+                        SmartRecruiters
+                    </label>
+                </div>
+            </div>
+        </div>
+        <select id="timeRange">
+            <option value="">All time</option>
+            <option value="qdr:h">Past hour</option>
+            <option value="qdr:d">Past 24 hours</option>
+            <option value="qdr:w">Past week</option>
+            <option value="qdr:m">Past month</option>
+        </select>
+        <button onclick="generateSearch()">Generate Search</button>
+        <div id="results"></div>
+    </div>
+</body>
+</html>
