@@ -22,7 +22,7 @@ function generateSearch() {
     if (document.getElementById('greenhouse').checked) {
         sites.push('site:*boards.greenhouse.io/*');
     }
-    if (document.getElementById('llever').checked) {
+    if (document.getElementById('lever').checked) {
         sites.push('site:jobs.lever.co/*');
     }
     if (document.getElementById('ashby').checked) {
