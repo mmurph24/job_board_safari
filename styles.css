@@ -384,6 +384,10 @@ button:hover {
         width: 59% !important;
         margin-left: 35px !important;
     }
+
+    .category p {
+        padding-right: 20px;
+    }
     
 }
 
@@ -417,5 +421,9 @@ button:hover {
         padding-left: 0 !important;
         border-left: none !important;
         font-size: 9px !important;
+    }
+
+    .category p {
+        padding-right: 10px;
     }
 }
