@@ -1,4 +1,4 @@
-Searching for jobs is a soul-crushing experience.
+**Searching for jobs is a soul-crushing experience.**
 
 I've recommended lots of handy Google search tricks to help job-seekers find new and interesting roles over the years, so I decided to throw together a little tool to quickly help people craft targeted searches across major job boards with one click.
 
