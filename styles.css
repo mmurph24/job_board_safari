@@ -267,6 +267,7 @@ button:hover {
     color: #525f7f !important;
     line-height: 1.4 !important;
     margin: 0 15px !important;
+    padding-left: 8px !important; /* Reduced from 15px */
     border-left: 1px solid #d8e2f6 !important;
     align-self: center !important;
     box-sizing: border-box !important;
@@ -342,56 +343,6 @@ button:hover {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-/* Additional components */
-.feature-label {
-    position: relative;
-}
-
-.info-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 16px;
-    background-color: #4050c0;
-    color: white;
-    border-radius: 50%;
-    font-size: 11px;
-    font-style: italic;
-    margin-left: 5px;
-    cursor: help;
-}
-
-.tooltip {
-    visibility: hidden;
-    width: 250px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px;
-    position: absolute;
-    z-index: 10;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.feature-badge {
-    display: inline-block;
-    font-size: 10px;
-    color: #4050c0;
-    margin-left: 5px;
-    cursor: help;
-}
-
-/* Hide footer by default */
-.app-footer {
-    display: none;
 }
 
 /* Responsive adjustments */
