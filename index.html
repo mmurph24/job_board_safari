@@ -38,9 +38,14 @@
                 <p>Fast and easy job boards with a single page and no login required.</p>
                 <button type="button" onclick="selectAll('popular')">Select All</button>
                 <div class="checkbox-group" id="popular" role="group" aria-labelledby="popular-heading">
-                    <label>
-                        <input type="checkbox" id="greenhouse" checked />
-                        Greenhouse
+                    <label class="has-note">
+                        <span>
+                            <input type="checkbox" id="greenhouse" checked />
+                            Greenhouse
+                        </span>
+                        <div class="checkbox-note">
+                            <a href="https://my.greenhouse.io" target="_blank" rel="noopener">Create a profile</a> to save your information and autofill applications
+                        </div>
                     </label>
                     <label>
                         <input type="checkbox" id="llever" checked />
