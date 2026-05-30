@@ -385,6 +385,80 @@ button {
 .category:nth-child(2) { --accent: var(--cat2); --accent-soft: var(--cat2-soft); }
 .category:nth-child(3) { --accent: var(--cat3); --accent-soft: var(--cat3-soft); }
 
+/* Card 1 (User-Friendly): indigo halo + corner glow, no bar */
+.category:nth-child(1) {
+    background:
+        radial-gradient(circle at top right, var(--cat1-soft) 0%, transparent 60%),
+        var(--surface-elev);
+    box-shadow:
+        var(--shadow-sm),
+        0 12px 36px -14px rgba(99, 102, 241, 0.35);
+}
+.category:nth-child(1)::before { display: none; }
+.category:nth-child(1)::after { display: none; }
+.category:nth-child(1):hover {
+    box-shadow:
+        var(--shadow-md),
+        0 16px 42px -14px rgba(99, 102, 241, 0.42);
+}
+
+[data-theme="dark"] .category:nth-child(1) {
+    box-shadow:
+        var(--shadow-sm),
+        0 12px 36px -14px rgba(129, 140, 248, 0.28);
+}
+[data-theme="dark"] .category:nth-child(1):hover {
+    box-shadow:
+        var(--shadow-md),
+        0 16px 42px -14px rgba(129, 140, 248, 0.36);
+}
+
+/* Card 2 (Multi-Step): asymmetric corners + bottom-right glow, no bar */
+.category:nth-child(2) {
+    border-radius: 16px 4px 16px 4px;
+}
+.category:nth-child(2)::before { display: none; }
+.category:nth-child(2)::after {
+    top: auto;
+    right: -15%;
+    bottom: -50%;
+    left: auto;
+    width: 280px;
+    height: 280px;
+}
+
+/* Card 3: hazard-stripe top, dashed border, no soft glow */
+.category:nth-child(3) {
+    border-style: dashed;
+    border-width: 1.5px;
+    border-color: rgba(234, 88, 12, 0.5);
+    border-radius: 6px;
+    padding-top: 26px;
+}
+.category:nth-child(3)::before {
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 10px;
+    background: repeating-linear-gradient(
+        135deg,
+        var(--cat3) 0 9px,
+        #fbbf24 9px 18px
+    );
+    opacity: 0.85;
+}
+.category:nth-child(3)::after { display: none; }
+.category:nth-child(3):hover {
+    border-color: var(--cat3);
+}
+
+[data-theme="dark"] .category:nth-child(3) {
+    border-color: rgba(249, 115, 22, 0.55);
+}
+[data-theme="dark"] .category:nth-child(3)::before { opacity: 0.75; }
+
 .category h3 {
     margin: 0 0 4px;
     font-family: 'Montserrat', sans-serif;
